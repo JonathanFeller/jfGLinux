@@ -47,3 +47,11 @@ void WindowL::SwapBuffers(int offsetX, int offsetY)
 {
     XPutImage(m_display, m_window, m_gc, m_xImage, 0, 0, offsetX, offsetY, m_width, m_height);
 }
+
+std::string WindowL::buildFilePath(std::string path) {
+   char pathBuffer[MAX_FILE_PATH];
+   getcwd(pathBuffer, MAX_FILE_PATH);
+   pathBuffer[strlen(pathBuffer)] = '/';
+   strcat(pathBuffer, path.c_str());
+   return std::string(pathBuffer);
+}

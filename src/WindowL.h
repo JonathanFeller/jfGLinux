@@ -3,6 +3,9 @@
 #include <X11/Xos.h>
 #include <string>
 
+#include <limits.h>
+#define MAX_FILE_PATH PATH_MAX
+
 #include "Render.h"
 
 class WindowL
@@ -20,6 +23,8 @@ private:
 public:
     WindowL(Render &render, std::string title, int left, int top, int width, int height);
     ~WindowL();
+
+    static std::string buildFilePath(std::string path);
 
     void SwapBuffers(int offsetX = 0, int offsetY = 0);
     void Clear();
