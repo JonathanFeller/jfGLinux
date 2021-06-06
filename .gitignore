@@ -390,6 +390,7 @@ FodyWeavers.xsd
 # Visual Studio 2019 cache/options cmake directory
 .vs/
 .vscode/
+Project
 
 # Build
 out/
