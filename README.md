@@ -1,0 +1,27 @@
+# jfGL(inux)
+jfGL is a graphics library that I've been working on since late 2014.
+I'm currently porting it to Linux, this repo just has test code so I know what I need to make it cross platform.
+The main repo is private and will remain private until it's fully ported.
+
+## Why did I make my own graphics library? (Long story)
+I've always been interested in computer graphics, from 14 to 15 I made Youtube tutorials on 3dsMax, Cinema 4D and RealFlow.
+Back in 2013-2014 I was working with Visual Basic 6, and decided I would make a game. I learned a few things about OpenGL and SDL, and got very interested in computer graphics.
+ decided to move on inside VB6 since I was VERY good at it at the time. I made a game similar to Starcraft (I still hold the source code), and featured a 2D dimetric projection.
+This got me into depths of algorithms, I learned Djikstra, A*, Trees, game loops, and the like, which I needed to build the game.
+I then decided to move on to 3d, I had watched "Notch" (Creator of Minecraft?) create a game in Java back in 2011, where he'd build the level out of a bitmap, where each color was a feature on the map, it was similar to Wolfenstein.
+So I tried to do the same. But on Visual Basic 6, and... it didn't work, I didn't know why at the time, but things went south cause I was using trig functions to get angles and when I turned around the "zero", everything would stutter and not work at all, and to be honest, this was not the right way to do this.
+I gave up on it, and moved on to learn how 3d graphics actually work, about a month of study later, I was much more familiar with matrices and trig funcions (school didn't help much...), and got a simple 3d view going on VB6, where I could rotate around an origin, and move stuff around and change it using basic transformations (euler rotations, translation and scaling).
+I inpired on 3dsmax and made my own 3d Editor on VB6 (And yes... I still have the source code), where I could create 3d models in, and improve on.
+One thing I liked to do on 3ds max was make car models, where I'd import side, top and front blueprints of a car and create each vertex, then link them together.
+So that's what I set out to do on my 3d editor, I could create vertices on click, import images, and use them as a guide. I create a Lamborghini Gallardo (which is featured in the picture above) vertex per vertex (actually only half of it, then I just mirrored).
+Well, I had the vertices, which I could export to a file with its XYZ coordinates and import, so I could work on it multiple days. Now what? I need triangles!!
+I then create a feature to link the vertices together, which I called "trivertex", and yes... I took a few days to link them all together. Now I need textures!
+I had no idea how this worked, so I went on another hunt, for Texture mapping, I did understand a thing or two because of my 3d background (UVW Mapping), and looked for math to map the texture to the screen. I learned Baryocentric Coordinates and implemented it into VB6. That's when a problem showed up, VB6 was way too slow. I looked for weeks on how to improve the speed, implemented every single thing but it was still too slow. That was when I got interested in C/C++. I knew a bit of C because I used to write code for CS 1.6 plugins, which were similar to C, so I was quite quick to pick it up, I create a DLL which implemented bariocentric coordinates (Yes... I still have the source code!), it was an instant speed boost, from a few fps to a hundred. At this point, all I had was a blackscreen which a (poorly) textured Lamborghini Gallardo, driving around with the camera following it. Okay! I have everything that I need, except the Physics for the car... And you guessed it, I went on a journey to learn about physics, downloaded multiple articles and got to work. I created a "car parameters editor" on VB6, to plot torque/hp curves, along with car parameters like gear ratios, transmission efficiency, drag coeficient and so on. (Yes... The source code is here!). I made a few projects to test the physics and it was working fine, ported it to the game, made the car "lean" on curves and acceleration and braking.
+Went on to create the scenarios, and then a problem showed up, it was too slow! Only a few things extra on screen made it too expensive. I gave it up and decided I wanted to build my own "GPU" in software, so it would be as fast as possible. And this is how this project was born. This is when I actually learned how 3d graphics work, with projection matrices, frostrum clipping, perspective texture mapping, and the hardest to wrap my head around, Quaterions. (which I only "understood" when I watched a video by Ben Eater and 3blue1brown where you can interact with a Quaternion).
+
+### Current state of the project
+It implements vector & quaternion operations and matrix transformations, back-face culling, z-buffering and frustum clipping.
+Pixels are draw actually using scan-line rendering (same as your GPU, which is crazy fast cause it's mostly additions). It has flat shading, Gouraud shading and Phong shading. Also ambient, point and directional lights (working on spot lights...). The most "in need" feature right now are Materials (to control which shader to use) and a Keyboard wrapper.
+
+### What next?
+I want to create GUIs, a basic physics engine (maybe based on my previous one?), and a scenes manager, to code a game that I used to play when I was a kid, still haven't decided which one...
