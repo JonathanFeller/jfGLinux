@@ -13,6 +13,8 @@ WindowL::WindowL(Render &render, std::string title, int left, int top, int width
     XSelectInput(m_display, m_window, ExposureMask);
     m_gc = XCreateGC(m_display, m_window, 0, 0);
     XMapWindow(m_display, m_window);
+    wm_delete_window = XInternAtom(m_display, "WM_DELETE_WINDOW", False);
+    XSetWMProtocols(m_display, m_window, &wm_delete_window, 1);
 
     m_width = width;
     m_height = height;

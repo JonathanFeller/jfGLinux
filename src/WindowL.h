@@ -36,4 +36,6 @@ public:
 
     int getHeight();
     int getWidth();
+
+    Atom wm_delete_window;
 };
