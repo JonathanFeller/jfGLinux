@@ -18,4 +18,4 @@ if((CMAKE_CXX_COMPILER_ID MATCHES "Clang") OR (CMAKE_CXX_COMPILER_ID MATCHES "GN
     target_link_libraries(${PROJECT_NAME} ${X11_LIBRARIES})
 endif()
 
-target_compile_options (${PROJECT_NAME} PRIVATE -Wno-narrowing)
+# target_compile_options (${PROJECT_NAME} PRIVATE)

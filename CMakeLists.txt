@@ -5,13 +5,15 @@ cmake_minimum_required (VERSION 3.8)
 
 project ("jfGL")
 
-# Include sub-projects.
-add_subdirectory ("src")
-
 if((CMAKE_CXX_COMPILER_ID MATCHES "Clang") OR (CMAKE_CXX_COMPILER_ID MATCHES "GNU"))
-    add_compile_options(-ffast-math)
-    message("-ffast-math")
+    add_compile_options(-Ofast)
+    add_compile_options(-funsafe-math-optimizations)
+    add_compile_options(-funroll-loops)
+    message("-Ofast -funsafe-math-optimizations -funroll-loops")
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     add_compile_options(/fp:fast)
     message("/fp:fast")
 endif()
+
+# Include sub-projects.
+add_subdirectory ("src")
